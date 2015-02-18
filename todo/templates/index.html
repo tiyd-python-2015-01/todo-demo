@@ -1,30 +1,46 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <h1>Create a new todo</h1>
-    <form action="{{ url_for('add_todo') }}" method="post">
-        {{ new_todo_form.hidden_tag() }}
-        {{ new_todo_form.text(size=50) }}
-        <input type="submit" value="Create todo"/>
-    </form>
-    <h1>All todos</h1>
-    <form action="{{ url_for('complete') }}" method="post">
-        <ul>
+    <div class="row">
+        <h1 class="large-12 columns">Create a new todo</h1>
+    </div>
+
+    <div class="row">
+        <form action="{{ url_for('add_todo') }}" method="post">
+            {{ new_todo_form.hidden_tag() }}
+            <div class="large-6 columns">{{ new_todo_form.text(size=50) }}</div>
+            <div class="large-6 columns"><input class="button" type="submit" value="Create todo"/></div>
+        </form>
+    </div>
+
+    <hr/>
+
+    <div class="row">
+        <h1 class="large-12 columns">All todos</h1>
+
+        <form action="{{ url_for('complete') }}" method="post">
             {% for todo in todos %}
-                <li>
+                <div class="large-12 columns">
                     <input type="checkbox" name="todo" id="todo-{{ todo.id }}" value="{{ todo.id }}"/>
                     <label for="todo-{{ todo.id }}">{{ todo.text }}</label>
-                </li>
+                </div>
             {% endfor %}
-        </ul>
-        <input type="submit" value="Mark checked as done"/>
-    </form>
-    <h2>Completed todos</h2>
-    <ul>
+            <div class="large-12 columns">
+            <input class="button" type="submit" value="Mark checked as done"/>
+            </div>
+
+        </form>
+    </div>
+
+<hr/>
+
+    <div class="row">
+        <h2 class="large-12 columns">Completed todos</h2>
         {% for todo in completed %}
-            <li>
+            <div class="large-12 columns">
                 {{ todo.text }}
-            </li>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
+
 {% endblock %}
