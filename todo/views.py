@@ -3,7 +3,7 @@ from datetime import datetime
 from flask import render_template, request, redirect, url_for, flash
 from .models import Todo
 from .forms import TodoForm
-from .app import app, db
+from . import app, db
 
 @app.route("/")
 def index():
