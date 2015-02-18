@@ -3,7 +3,8 @@
 {% block body %}
     <h1>Create a new todo</h1>
     <form action="{{ url_for('add_todo') }}" method="post">
-        <input type="text" name="text"/>
+        {{ new_todo_form.hidden_tag() }}
+        {{ new_todo_form.text(size=50) }}
         <input type="submit" value="Create todo"/>
     </form>
     <h1>All todos</h1>
