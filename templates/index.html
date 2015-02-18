@@ -18,4 +18,12 @@
         </ul>
         <input type="submit" value="Mark checked as done"/>
     </form>
+    <h2>Completed todos</h2>
+    <ul>
+        {% for todo in completed %}
+            <li>
+                {{ todo.text }}
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
